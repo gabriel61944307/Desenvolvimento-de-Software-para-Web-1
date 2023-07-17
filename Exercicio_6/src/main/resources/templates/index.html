@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{titulo}">Conversor</title>
+</head>
+
+<body>
+    <div>
+		<a th:href="@{''(lang=pt)}"><img alt="" th:src="@{/image/Brasil.gif}" style="width: 50px;" /></a> 
+		<a th:href="@{''(lang=en)}"><img alt="" th:src="@{/image/EUA.gif}" style="width: 50px;" /></a>
+	</div>
+    <form action="converte" method="POST">
+        <fieldset>
+            <legend th:text="#{titulo}">Conversão Celsius - Fahrenheit</legend>
+            <label for="val_min" th:text="#{valorMinimo}">Valor minimo</label>
+            <input type="text" name="val_min" id ="val_min"/>
+            
+            <br>
+            <br>
+
+            <label for="val_max" th:text="#{valorMaximo}">Valor maximo</label>
+            <input type="text" name="val_max" id ="val_max"/>
+
+            <br>
+            <br>
+
+            <label for="val_inc" th:text="#{valorIncremento}">Valor do incremento</label>
+            <input type="text" name="val_inc" id ="val_inc"/>
+
+            <br>
+            <br>
+
+            <input type="submit" th:value="#{solicita}"/>
+        </fieldset>
+    </form>
+</body>
+
+</html>
