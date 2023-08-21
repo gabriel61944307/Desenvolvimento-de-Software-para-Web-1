@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Cadastrar Estados</span></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="${estado.id == null} ? @{/estados/salvar} : @{/estados/editar}"
+				th:object="${estado}" method="POST">
+				
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="nome">Nome</label> 
+						<input type="text" class="form-control" id="nome"
+							autofocus="autofocus" th:field="*{nome}"
+							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{nome}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="sigla">Sigla</label> 
+						<input type="text" class="form-control" id="sigla"
+							autofocus="autofocus" th:field="*{sigla}"
+							th:classappend="${#fields.hasErrors('sigla')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{sigla}"></span>
+						</div>
+					</div>
+
+
+					<div class="form-group col-md-6">
+						<label for="tamanho">Tamanho (km²)</label> 
+						<input type="number" class="form-control" id="tamanho"
+							autofocus="autofocus" th:field="*{tamanho}"
+							th:classappend="${#fields.hasErrors('tamanho')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{tamanho}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="populacao">Populacao</label> 
+						<input type="number" class="form-control" id="populacao"
+							autofocus="autofocus" th:field="*{populacao}"
+							th:classappend="${#fields.hasErrors('populacao')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{populacao}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="qtdCidades">Número de cidades</label> 
+						<input type="number" class="form-control" id="qtdCidades"
+							autofocus="autofocus" th:field="*{qtdCidades}"
+							th:classappend="${#fields.hasErrors('qtdCidades')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{qtdCidades}"></span>
+						</div>
+					</div>
+
+					
+				</div>
+
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
+
+
+
